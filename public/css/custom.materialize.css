@@ -1,0 +1,92 @@
+*{
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+nav .brand-logo {
+	color: #1b5e20;
+	font-weight: 700;
+}
+
+nav{
+	background-color: #fff;
+}
+
+nav a, nav ul a {
+	color: #212121;
+}
+
+nav ul li a {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+nav ul li {
+	transition: all .3s;
+}
+
+nav ul:not(#mobile) li.active:nth-child(1), nav ul:not(#mobile) li:hover:nth-child(1) {
+	border-bottom: 7.5px solid #1e88e5;
+}
+
+nav ul:not(#mobile) li.active:nth-child(2), nav ul:not(#mobile) li:hover:nth-child(2) {
+	border-bottom: 7.5px solid #64b5f6;
+}
+
+nav ul:not(#mobile) li.active:nth-child(3), nav ul:not(#mobile) li:hover:nth-child(3) {
+	border-bottom: 7.5px solid #bbdefb;
+}
+
+nav ul:not(#mobile) li.active:nth-child(4), nav ul:not(#mobile) li:hover:nth-child(4) {
+	border-bottom: 7.5px solid #4476cc;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto';
+	font-weight: 100;
+}
+
+.material-icons{
+	vertical-align:middle;
+}
+
+.card .card-content {
+	color: #212121;
+}
+
+.card .card-action a {
+	color: inherit;
+}
+
+
+.splash {
+	color: #fff;
+	padding-top : 10vh;
+	background-color: #2e7d32;
+	background-image: url("http://i.imgur.com/tOjR6Ui.jpg");
+	height: 80vh;
+}
+
+
+.whatis {
+	padding :3rem 2rem;
+	color: #5A5A5A;
+	background-color: #fff;
+	height: 100%;
+}
+
+.features{
+	background-color: #2e7d32;
+	color:#fff;
+}
+
+.faq p {
+	font-size : 2rem;
+	font-weight: 300;
+}
+
+.faq .material-icons {
+	color : #1b5e20;
+}
