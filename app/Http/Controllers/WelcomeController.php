@@ -30,7 +30,10 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$page = array(
+			'title' => 'Home'
+		);
+		return \View::make('welcome' )->with('page',$page);
 	}
 
 }
