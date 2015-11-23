@@ -5029,3 +5029,10 @@ body.skin-3 {
     display: none;
   }
 }
+.notifError{
+  text-align: left;
+}
+
+.notifError * {
+  list-style: disc;
+}
