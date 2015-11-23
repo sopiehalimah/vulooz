@@ -21,6 +21,48 @@ class CreateUsersTable extends Migration {
 			$table->rememberToken();
 			$table->timestamps();
 		});
+		DB::table('users')->insert(
+	        array(
+	        	'name' => 'Aunur Refi',
+	            'email' => 'admin_aunur@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
+		DB::table('users')->insert(
+	        array(
+	        	'name' => 'Dyo Rizqal Pahlevi',
+	            'email' => 'admin_dyo@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
+	    DB::table('users')->insert(
+	        array(
+	        	'name' => 'Fahrel Aviary',
+	            'email' => 'admin_fahrel@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
+	    DB::table('users')->insert(
+	        array(
+	        	'name' => 'Ichsan Firdaus',
+	            'email' => 'admin_ichsan@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
+	    DB::table('users')->insert(
+	        array(
+	        	'name' => 'Muhammad Reyhan Abizar',
+	            'email' => 'admin_reyhan@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
+	    DB::table('users')->insert(
+	        array(
+	        	'name' => 'Sopie Halimah',
+	            'email' => 'admin_sopie@vulooz.com',
+	            'password' => Hash::make('admin')
+	        )
+	    );
 	}
 
 	/**
