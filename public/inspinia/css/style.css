@@ -937,13 +937,13 @@ button.dim:active:before {
   font-size: 50px;
 }
 .label {
-  background-color: #d1dade;
-  color: #5e5e5e;
+  /*background-color: inherit;
+  color: inherit;
   font-family: 'Open Sans';
   font-size: 10px;
   font-weight: 600;
   padding: 3px 8px;
-  text-shadow: none;
+  text-shadow: none;*/
 }
 .badge {
   background-color: #d1dade;
@@ -2838,14 +2838,14 @@ video {
 }
 #page-wrapper {
   padding: 0 15px;
-  min-height: 568px;
+  min-height: 100vh;
   position: relative !important;
 }
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
     margin: 0 0 0 240px;
-    min-height: 1000px;
+    min-height: 100vh;
   }
 }
 .title-action {
@@ -4938,7 +4938,7 @@ body.skin-3 {
   #page-wrapper {
     position: inherit;
     margin: 0 0 0 220px;
-    min-height: 1200px;
+    min-height: 100vh;
   }
   .navbar-static-side {
     z-index: 101;
@@ -4955,7 +4955,7 @@ body.skin-3 {
   #page-wrapper {
     position: inherit;
     margin: 0 0 0 0px;
-    min-height: 1000px;
+    min-height: 100vh;
   }
   .body-small .navbar-static-side {
     display: none;

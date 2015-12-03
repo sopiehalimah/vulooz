@@ -1,65 +1,66 @@
-@extends('app')
-
-@section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="/auth/register">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up | Vulooz</title>
+        <link rel="stylesheet" type="text/css" href="{{ url('css/login.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div id="login" class="signin-card">
+              <div class="logo-image">
+              <a href=" {{ url('/') }}" class="logoLink"><h1 class="logo" style="font-weight:100">Vulooz</h1></a>
+              </div>
+              <h1 class="display1">Sign Up</h1>
+              </br>
+              <p class="subhead">
+                  @foreach($errors->all() as $error)
+                    <p class="subhead">{{ $error }}</p>
+                  @endforeach
+              </p>
+              <form action="" method="POST" role="form">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div id="form-login-full-name" class="form-group">
+                  <input id="fullName" class="form-control" name="name" type="text" alt="fullName" required/>
+                  <span class="form-highlight"></span>
+                  <span class="form-bar"></span>
+                  <label for="fullName" class="float-label">Full Name</label>
+                </div>
+                <div id="form-login-username" class="form-group">
+                  <input id="email" class="form-control" name="email" type="text" alt="login" required/>
+                  <span class="form-highlight"></span>
+                  <span class="form-bar"></span>
+                  <label for="email" class="float-label">Email</label>
+                </div>
+                <div id="form-login-password" class="form-group">
+                  <input id="passwd" class="form-control" name="password" type="password" alt="password" required>
+                  <span class="form-highlight"></span>
+                  <span class="form-bar"></span>
+                  <label for="password" class="float-label">Password</label>
+                </div>
+                <div id="form-login-password-confirm" class="form-group">
+                  <input id="password_confirmation" class="form-control" name="password_confirmation" type="password" alt="password_confirmation" required>
+                  <span class="form-highlight"></span>
+                  <span class="form-bar"></span>
+                  <label for="password_confirmation" class="float-label">Password Confirmation</label>
+                </div>
+                <div id="form-term-condition" class="form-group">
+                  <div class="checkbox checkbox-default">       
+                      <input id="remember" type="checkbox" value="yes" alt="Remember me" class="">
+                      <label for="remember">I Read And Accept The Terms And Condition</label>      
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-block btn-success ripple-effect" type="submit" name="Submit" alt="sign up">Sign Up</button>  
+                </div>
+              </form>
+              <br/>
+              <form action="/login">
+              	<button class="btn btn-block btn-danger ripple-effect" type="submit" alt="Sign In" style="background:#ff4337">Sign In</button>                	
+              </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="{{ url('/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url('/js/login.js') }}"></script>
+        <script type="text/javascript" src="{{ url('/js/ripple.js') }}"></script>
+    </body>
+</html>

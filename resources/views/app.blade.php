@@ -1,76 +1,108 @@
+<?php use Carbon\Carbon; ?>
 <!DOCTYPE html>
-  <html>
-   <head>
-    <title>{{ $page['title'] }} - Vulooz</title>
-      <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,700,700italic' rel='stylesheet' type='text/css'>
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="{{ url('css/materialize.min.css') }}"  media="screen,projection"/>
-      <link type="text/css" rel="stylesheet" href="{{ url('css/custom.materialize.css') }}"  media="screen,projection"/>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $data['pageTitle']}} | Vulooz</title>
+    <link href="{{ url('inspinia/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url('inspinia/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ url('inspinia/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ url('inspinia/css/style.css') }}" rel="stylesheet">
+    @yield('style')
+</head>
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   </head>
+<body class="top-navigation">
 
-   <body>
-      <div class="navbar-fixed">
-        <nav role="navigation">
-           <div class="nav-wrapper container">
-              <a id="logo-container" href="{{ url() }}" class="brand-logo">Vulooz</a>
-              <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url('login') }}">Login<i class="material-icons left">exit_to_app</i></a></li>
-                <li><a href="{{ url('register') }}">Register<i class="material-icons left">add</i></a></li>
-              </ul>
-              <ul class="side-nav" id="mobile">
-                <li><a href="{{ url('login') }}">Login<i class="material-icons left">exit_to_app</i></a></li>
-                <li><a href="{{ url('register') }}">Register<i class="material-icons left">add</i></a></li>
-              </ul>
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="{{ url('/') }}" class="navbar-brand">Vulooz</a>
             </div>
-           </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                      <a href="/income">Income</a>
+                    </li>
+                    <li>
+                      <a href="/spending">Spending</a>
+                    </li>
+                    <li>
+                      <a href="/plans">Plans</a>
+                    </li>
+                    <li>
+                      <a href="/stats">Statistic</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                      <a onclick="return false">
+                        <span class="currency1">{{ \Auth::user()->currentMoney }}</span>
+                        <span> - </span>
+                        <span class="currency2">{{ $data['secondaryCurrencyMoney'] }}</span>
+                      </a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ Auth::user()->name }} <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="/settings">Setting</a></li>
+                            <li><a href="/logout">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </nav>
-      </div>
-      <div class="container-fluid">
-        @yield('content')
-      </div>
-      <footer class="page-footer green darken-3">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Vulooz</h5>
-              <p class="grey-text text-lighten-4">New Way To Manage Your Finance</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-              </ul>
-            </div>
+        </div>
+        <div class="wrapper wrapper-content">
+          @yield('content')
+        </div>
+        <div class="footer">
+          <div class="pull-right">
+              Save Your <strong>Money</strong> For <strong>Free.</strong>
+          </div>
+          <div>
+              <strong>Copyright</strong> Vulooz &copy; 2015
           </div>
         </div>
-        <div class="footer-copyright">
-          <div class="container">
-          © 2015 Copyright
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-          </div>
-        </div>
-      </footer>
-      <script type="text/javascript" src="{{ url('js/jquery.min.js') }}"></script>
-      <script type="text/javascript" src="{{ url('/js/materialize.min.js') }}"></script>
-      <script type="text/javascript">
-        $(function() {
-          $(".button-collapse").sideNav();          
-          if(location.pathname.split("/")[1] == ""){
-            $('nav ul li a[href="{{ url() }}"]').parent('li').addClass('active');  
-          }
-          else{
-            $('nav ul li a[href^="{{ url() }}/' + location.pathname.split("/")[1] + '"]').parent('li').addClass('active');
-          }
-        });
-      </script>
-   </body>
+      </div>
+    </div>
+    <!-- Mainly scripts -->
+    <script src="{{ url('inspinia/js/jquery-2.1.1.js') }} "></script>
+    <script src="{{ url('js/modernizr-1.7.min.js') }} "></script>
+    <script src="{{ url('js/jquery.currency.js') }}"></script>
+    <script src="{{ url('inspinia/js/bootstrap.min.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/metisMenu/jquery.metisMenu.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js') }} "></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ url('inspinia/js/inspinia.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/pace/pace.min.js') }} "></script>
+
+    <!-- Flot -->
+    <script src="{{ url('inspinia/js/plugins/flot/jquery.flot.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/flot/jquery.flot.tooltip.min.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/flot/jquery.flot.resize.js') }} "></script>
+
+    <!-- ChartJS-->
+    <script src="{{ url('inspinia/js/plugins/chartJs/Chart.min.js') }} "></script>
+    <script src="{{ url('inspinia/js/plugins/chartJs/Chart.min.js') }} "></script>
+
+    <!-- Peity -->
+    <script src="{{ url('inspinia/js/plugins/peity/jquery.peity.min.js') }} "></script>
+    <!-- Peity demo -->
+    <script src="{{ url('inspinia/js/demo/peity-demo.js') }} "></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".currency1").currency({ region: '{{ \Auth::user()->mainCurrency }}', thousands: ".", decimal: ",", decimals: 0 });
+        $(".currency2").currency({ region: '{{ \Auth::user()->secondaryCurrency }}', thousands: ".", decimal: ",", decimals: 0 });
+    });
+    </script>
+    @yield('script')
+</body>
+
 </html>
