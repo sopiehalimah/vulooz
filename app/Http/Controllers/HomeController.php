@@ -30,7 +30,12 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		// \DB::table('users')->where('id', \Auth::user()->id)->get();
+		$currencyController = new CurrencyController();
+		$data  = array(
+			'pageTitle' => 'Dashboard',
+			'secondaryCurrencyMoney' =>  $currencyController->convert(\Auth::user()->currentMoney, \Auth::user()->mainCurrency, \Auth::user()->secondaryCurrency)
+		);
+		return \View::make('dashboard')->with('data',$data);
 	}
-
 }

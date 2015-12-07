@@ -16,12 +16,27 @@ class CreatePengeluaranTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('idUser');
-			$table->integer('idKategori');
-			$table->string('jumlah');
+			$table->integer('amount');
+			$table->string('currency');
 			$table->string('description');
-			$table->timestamp('waktu');
+			$table->string('frequency');
+			$table->string('type');
+			$table->timestamp('nextPayment');
 			$table->timestamps();
 		});
+		for ($i=1; $i<=6 ; $i++) { 
+			DB::table('pengeluaran')->insert(
+		        array(
+		        	'idUser' => $i,
+		           	'amount' => rand(700000,4000000),
+		           	'currency' => 'mainCurrency',
+		           	'description' => 'Internet Quota 20GB',
+		           	'frequency' => 'monthly',
+		           	'type' => 'Internet',
+		           	'nextPayment' => '2015-11-09'
+		        )
+		    );
+		}
 	}
 
 	/**
